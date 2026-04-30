@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Daily Grind | Coffee, Work & Chill</title>
+    
+    <!-- Meta Tags for SEO -->
+    <meta name="description" content="Nikmati kopi artisan terbaik dengan suasana tenang di The Daily Grind. Tempat terbaik untuk bekerja dan bersantai.">
+    <meta property="og:title" content="The Daily Grind | Aesthetic Cafe Experience">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    
+    <style>
+        html { scroll-behavior: smooth; }
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background-color: #FDFCFB;
+            color: #2C1810;
+        }
+        .font-serif { font-family: 'Playfair Display', serif; }
+
+        /* Progress Bar */
+        #progress-bar {
+            position: fixed; top: 0; left: 0; height: 3px;
+            background: linear-gradient(to right, #783F04, #D97706);
+            z-index: 1000; width: 0%;
+        }
+
+        .hero-bg {
+            background: linear-gradient(rgba(44, 24, 16, 0.6), rgba(44, 24, 16, 0.6)), 
+                        url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&q=80&w=1920');
+            background-size: cover; background-position: center; background-attachment: fixed;
+        }
+
+        .glass-nav { 
+            background: rgba(255, 255, 255, 0.85); 
+            backdrop-filter: blur(10px); 
+        }
+
+        .image-container {
+            position: relative; overflow: hidden; border-radius: 1.5rem; 
+            height: 350px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .image-container img {
+            width: 100%; height: 100%; object-fit: cover; 
+            transition: transform 0.6s ease;
+        }
+
+        .image-container:hover img { transform: scale(1.08); }
+
+        /* Custom Checkout Animation */
+        .modal-active { overflow: hidden; }
+        
+        input:focus, select:focus {
+            border-bottom: 2px solid #783F04 !important;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="progress-bar"></div>
+
+    <!-- Floating WhatsApp -->
+    <a href="https://wa.me/628123456789" target="_blank" class="fixed bottom-6 left-6 z-50 bg-[#25D366] text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-transform flex items-center gap-2 group">
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+        <span class="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-500 font-bold whitespace-nowrap">Tanya Barista</span>
+    </a>
+
+    <!-- Nav -->
+    <nav class="fixed w-full z-[100] glass-nav border-b border-stone-200/50">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-xl md:text-2xl font-serif font-bold tracking-tight text-[#5E3B24]">Daily Coffee</a>
+            <div class="hidden md:flex space-x-10 text-xs font-bold uppercase tracking-widest text-[#5E3B24]/70">
+                <a href="#home" class="hover:text-amber-900 transition-colors">Home</a>
+                <a href="#menu" class="hover:text-amber-900 transition-colors">Menu</a>
+                <a href="#about" class="hover:text-amber-900 transition-colors">Our Story</a>
+                <a href="#testimonials" class="hover:text-amber-900 transition-colors">Review</a>
+            </div>
+            <a href="#menu" class="hidden md:block border border-amber-800 text-amber-800 px-6 py-2 rounded-full text-xs font-bold hover:bg-amber-800 hover:text-white transition-all">ORDER NOW</a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section id="home" class="h-screen flex items-center justify-center text-center text-white hero-bg px-6">
+        <div data-aos="fade-up">
+            <span class="uppercase tracking-[0.4em] text-[10px] md:text-xs mb-4 block text-amber-200 font-bold">Premium Coffee Experience</span>
+            <h1 class="text-6xl md:text-8xl font-serif mb-6 italic leading-tight">Brewed with <br>Passion.</h1>
+            <p class="text-sm md:text-xl mb-10 font-light max-w-xl mx-auto opacity-90">
+                Karena setiap tegukan punya cerita, dan setiap cerita layak untuk dibagikan.
+            </p>
+            <div class="flex flex-col md:flex-row gap-4 justify-center">
+                <a href="#menu" class="bg-amber-800 text-white px-10 py-4 rounded-full font-bold text-xs tracking-[0.2em] hover:bg-amber-900 transition-all shadow-xl">LIHAT MENU</a>
+                <a href="#about" class="bg-white/10 backdrop-blur-md border border-white/30 text-white px-10 py-4 rounded-full font-bold text-xs tracking-[0.2em] hover:bg-white/20 transition-all">TENTANG KAMI</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="py-24 max-w-6xl mx-auto px-6">
+        <div class="text-center mb-20" data-aos="fade-up">
+            <h2 class="text-4xl md:text-5xl font-serif mb-4 text-amber-950">Favorit Pelanggan</h2>
+            <p class="text-stone-500 text-sm tracking-widest uppercase italic">The Finest Selection</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+            <!-- Menu Item 1 -->
+            <div class="menu-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="image-container group overflow-hidden relative shadow-lg cursor-pointer" onclick="openCheckout('Sea Salt Latte', 35000)">
+                    <img src="https://images.unsplash.com/photo-1541167760496-162955ed8a9f?auto=format&fit=crop&q=80&w=600" alt="Sea Salt Latte">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <span class="text-white border border-white px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest">Pilih Item</span>
+                    </div>
+                </div>
+                <div class="mt-6 flex justify-between items-center">
+                    <div>
+                        <h3 class="text-xl font-serif text-amber-950">Sea Salt Latte</h3>
+                        <p class="text-xs text-stone-500 italic mt-1">Espresso, creamy milk, sea salt foam</p>
+                    </div>
+                    <span class="text-amber-800 font-bold">35k</span>
+                </div>
+            </div>
+
+            <!-- Menu Item 2 -->
+            <div class="menu-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="image-container group overflow-hidden relative shadow-lg cursor-pointer" onclick="openCheckout('Cold Brew Honey', 38000)">
+                    <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&q=80&w=600" alt="Cold Brew Honey">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <span class="text-white border border-white px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest">Pilih Item</span>
+                    </div>
+                </div>
+                <div class="mt-6 flex justify-between items-center">
+                    <div>
+                        <h3 class="text-xl font-serif text-amber-950">Cold Brew Honey</h3>
+                        <p class="text-xs text-stone-500 italic mt-1">12-hour steep, wild honey infusion</p>
+                    </div>
+                    <span class="text-amber-800 font-bold">38k</span>
+                </div>
+            </div>
+
+            <!-- Menu Item 3 -->
+            <div class="menu-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="image-container group overflow-hidden relative shadow-lg cursor-pointer" onclick="openCheckout('Almond Croissant', 28000)">
+                    <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&q=80&w=600" alt="Almond Croissant">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <span class="text-white border border-white px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest">Pilih Item</span>
+                    </div>
+                </div>
+                <div class="mt-6 flex justify-between items-center">
+                    <div>
+                        <h3 class="text-xl font-serif text-amber-950">Almond Croissant</h3>
+                        <p class="text-xs text-stone-500 italic mt-1">Buttery layers, toasted almond flakes</p>
+                    </div>
+                    <span class="text-amber-800 font-bold">28k</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="py-24 bg-gradient-to-br from-amber-50 to-stone-100">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl md:text-5xl font-serif mb-4 text-amber-950 italic">Cerita Kami</h2>
+                <p class="text-stone-500 text-sm tracking-widest uppercase">Our Story, Our Passion</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div data-aos="fade-right">
+                    <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&q=80&w=600" alt="The Daily Grind Story" class="rounded-2xl shadow-lg">
+                </div>
+
+                <div data-aos="fade-left" class="space-y-6">
+                    <p class="text-stone-600 leading-relaxed italic text-lg">
+                        "Dalam setiap cangkir kopi ada waktu, ada usaha, dan ada cerita yang ingin kami bagikan dengan Anda."
+                    </p>
+
+                    <p class="text-stone-600 leading-relaxed">
+                        The Daily Grind lahir dari obsesi sederhana: menciptakan ruang di mana setiap orang bisa menemukan ketenangan dalam kesibukan. Kami percaya bahwa kopi bukan sekadar minuman, tetapi ritual harian yang menghubungkan jiwa dengan momen.
+                    </p>
+
+                    <p class="text-stone-600 leading-relaxed">
+                        Setiap biji kopi yang kami gunakan dipilih dengan cermat dari petani lokal yang memahami tanah, cuaca, dan dedikasi. Kami menyanggupi untuk membawa cita rasa otentik yang mencerminkan passion, disertai aroma yang mengundang cerita-cerita baru untuk lahir.
+                    </p>
+
+                    <p class="text-stone-600 leading-relaxed">
+                        Di sini, Anda bukan sekadar pelanggan. Anda adalah bagian dari komunitas yang menghargai kualitas, keindahan, dan kebersamaan. Setiap tegukan adalah undangan untuk memperlambat langkah, merasakan hidup, dan membuat kenangan.
+                    </p>
+
+                    <div class="pt-6 border-t border-amber-200">
+                        <p class="text-sm font-serif italic text-amber-900">
+                            ✨ <span class="font-bold">Dikurasi dengan cinta oleh Tim The Daily Grind</span><br>
+                            <span class="text-xs text-stone-500">Sejak 2026, kami hadirkan lebih dari sekadar kopi—kami hadirkan pengalaman.</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="py-24 bg-stone-100">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="text-3xl font-serif mb-12 italic text-amber-950">Apa Kata Mereka?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white p-8 rounded-3xl shadow-sm text-left" data-aos="fade-right">
+                    <p class="text-stone-600 italic mb-6">"Kopi paling otentik di kota ini. Suasananya bikin betah buat nugas berjam-jam."</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 bg-amber-200 rounded-full"></div>
+                        <div>
+                            <p class="text-xs font-bold uppercase">Andini Putri</p>
+                            <p class="text-[10px] text-stone-400">Content Creator</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white p-8 rounded-3xl shadow-sm text-left" data-aos="fade-left">
+                    <p class="text-stone-600 italic mb-6">"Sea Salt Latte-nya juara! Perpaduan gurih dan manisnya pas banget."</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 bg-amber-800 rounded-full"></div>
+                        <div>
+                            <p class="text-xs font-bold uppercase">Budi Santoso</p>
+                            <p class="text-[10px] text-stone-400">Digital Nomad</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Checkout Modal (Enhanced) -->
+    <div id="checkout-modal" class="fixed inset-0 z-[150] hidden flex items-center justify-center p-4">
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="closeCheckout()"></div>
+        <div class="relative bg-white w-full max-w-md rounded-[2.5rem] p-8 shadow-2xl transition-all scale-95 overflow-y-auto max-h-[95vh]" id="modal-content">
+            <button onclick="closeCheckout()" class="absolute top-6 right-6 text-stone-400 hover:text-black">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+
+            <h2 class="text-3xl font-serif mb-6 text-amber-900 italic text-center">Konfirmasi Pesanan</h2>
+            
+            <div id="order-summary" class="mb-6 p-6 bg-stone-50 rounded-3xl border border-stone-100">
+                <!-- Data dari JS -->
+            </div>
+
+            <form id="payment-form" class="space-y-5">
+                <div>
+                    <label class="text-[10px] uppercase font-bold text-stone-400 block mb-2 tracking-widest">Nama Lengkap</label>
+                    <input type="text" id="cust-name" required placeholder="Contoh: Alex" class="w-full border-b border-stone-200 py-3 outline-none transition-all bg-transparent">
+                </div>
+                <div>
+                    <label class="text-[10px] uppercase font-bold text-stone-400 block mb-2 tracking-widest">Metode Pembayaran</label>
+                    <select id="pay-method" class="w-full border-b border-stone-200 py-3 outline-none bg-transparent">
+                        <option value="QRIS">QRIS / E-Wallet</option>
+                        <option value="Transfer">Transfer Bank</option>
+                        <option value="Kasir">Bayar di Kasir</option>
+                    </select>
+                </div>
+                
+                <div id="qris-display" class="pt-4 text-center">
+                    <p class="text-[9px] uppercase text-stone-400 mb-2">Scan QRIS di bawah ini</p>
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=GRINDCAFE" class="mx-auto border p-2 rounded-xl bg-white shadow-sm">
+                </div>
+
+                <button type="submit" id="btn-pay" class="w-full bg-amber-900 text-white py-4 rounded-full font-bold text-xs tracking-widest mt-4 hover:bg-amber-800 shadow-xl active:scale-95 transition-all">
+                    PESAN SEKARANG VIA WA
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="py-16 bg-white border-t border-stone-100">
+        <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-12 text-center md:text-left">
+            <div>
+                <h3 class="font-serif text-2xl text-amber-950 mb-4">The Daily Grind.</h3>
+                <p class="text-sm text-stone-500 leading-relaxed">Menyajikan kebahagiaan dalam cangkir sejak 2026. Biji kopi pilihan dari petani lokal untuk Anda.</p>
+            </div>
+            <div>
+                <h4 class="text-xs font-bold uppercase tracking-widest mb-4">Lokasi</h4>
+                <p class="text-sm text-stone-500">Jl. Senopati No. 123<br>Jakarta Selatan, Indonesia</p>
+            </div>
+            <div>
+                <h4 class="text-xs font-bold uppercase tracking-widest mb-4">Ikuti Kami</h4>
+                <div class="flex justify-center md:justify-start gap-6">
+                    <a href="#" class="text-stone-400 hover:text-amber-800 transition-colors underline">Instagram</a>
+                    <a href="#" class="text-stone-400 hover:text-amber-800 transition-colors underline">TikTok</a>
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-16 pt-8 border-t border-stone-50">
+            <p class="text-[10px] text-stone-400 uppercase tracking-[0.3em]">&copy; 2026 The Daily Grind. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ once: true, duration: 1000 });
+
+        let currentOrder = { name: "", price: 0 };
+
+        // Progress Bar logic
+        window.onscroll = function() {
+            let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            let scrolled = (winScroll / height) * 100;
+            document.getElementById("progress-bar").style.width = scrolled + "%";
+        };
+
+        function openCheckout(itemName, price) {
+            currentOrder = { name: itemName, price: price };
+            const modal = document.getElementById('checkout-modal');
+            const summary = document.getElementById('order-summary');
+            
+            summary.innerHTML = `
+                <div class="flex justify-between items-center">
+                    <span class="text-amber-900 font-serif text-xl italic">${itemName}</span>
+                    <span class="font-bold text-amber-800">Rp ${price.toLocaleString()}</span>
+                </div>
+            `;
+            
+            modal.classList.remove('hidden');
+            document.body.classList.add('modal-active');
+            setTimeout(() => {
+                document.getElementById('modal-content').classList.replace('scale-95', 'scale-100');
+            }, 10);
+        }
+
+        function closeCheckout() {
+            const modal = document.getElementById('checkout-modal');
+            document.getElementById('modal-content').classList.replace('scale-100', 'scale-95');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                document.body.classList.remove('modal-active');
+            }, 200);
+        }
+
+        // WhatsApp Integration
+        document.getElementById('payment-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const custName = document.getElementById('cust-name').value;
+            const payMethod = document.getElementById('pay-method').value;
+            const btn = document.getElementById('btn-pay');
+            
+            btn.innerText = "MENGALIHKAN...";
+            
+            // Format pesan WhatsApp
+            const message = `Halo The Daily Grind! Saya ingin memesan:%0A%0A` +
+                            `*Nama:* ${custName}%0A` +
+                            `*Pesanan:* ${currentOrder.name}%0A` +
+                            `*Total:* Rp ${currentOrder.price.toLocaleString()}%0A` +
+                            `*Metode:* ${payMethod}%0A%0A` +
+                            `Mohon diproses ya, terima kasih! ✨`;
+
+            const waLink = `https://wa.me/628123456789?text=${message}`;
+
+            setTimeout(() => {
+                window.open(waLink, '_blank');
+                closeCheckout();
+                btn.innerText = "PESAN SEKARANG VIA WA";
+            }, 1000);
+        });
+
+        // Hide QRIS if pay in cashier
+        document.getElementById('pay-method').addEventListener('change', function(e) {
+            const qris = document.getElementById('qris-display');
+            qris.style.display = (e.target.value === 'Kasir') ? 'none' : 'block';
+        });
+    </script>
+</body>
+</html>
